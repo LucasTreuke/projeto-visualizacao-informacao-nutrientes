@@ -31,6 +31,7 @@ fig.update_layout(dragmode="pan")
 
 external_stylesheets = ["style.css"]
 app = Dash(__name__, external_stylesheets=external_stylesheets)
+server = app.server
 
 app.layout = html.Div([
     dcc.Graph(id="graph", figure=fig, clear_on_unhover=True),
