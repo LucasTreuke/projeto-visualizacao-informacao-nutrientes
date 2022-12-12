@@ -8,20 +8,24 @@ import pandas as pd
 df = pd.read_csv("data/macros_dataset_images.csv")
 
 # let's make a scatter plot of the fat_100g and the proteins_100g grouped by category_name
-fig = px.scatter(df, x="fat_100g", y="proteins_100g", color="category_name", hover_name="food_name",
-    size="energy_100g", title="Fat vs Proteins", labels={"fat_100g":"Fat (g)", "proteins_100g":"Proteins (g)", "energy_100g":"Energy (kcal)"},
-    width=1200, height=600, color_discrete_sequence=px.colors.qualitative.Dark24,
-    custom_data=["energy_100g", "image_url", "fat_100g", "proteins_100g", "energy_100g", "carbohydrates_100g", "category_name"], hover_data={"image_url":True, "energy_100g":True})
+fig = px.scatter(df, 
+    x="fat_100g", 
+    y="proteins_100g", 
+    color="category_name", 
+    hover_name="food_name",
+    size="energy_100g", 
+    title="Fat vs Proteins (100g)", 
+    labels= {
+        "fat_100g":"Fat (g)", 
+        "proteins_100g":"Proteins (g)", 
+        "energy_100g":"Energy (kcal)"},
+    width=1200, 
+    height=600, 
+    color_discrete_sequence=px.colors.qualitative.Dark24,
+    custom_data=["energy_100g", "image_url", "fat_100g", "proteins_100g", "energy_100g", "carbohydrates_100g", "category_name"],
+    hover_data={"image_url":True, "energy_100g":True})
 # let's make the dots bigger
 fig.update_traces(marker=dict(size=10))
-
-# let's change the hover template
-fig.update_traces(hovertemplate="<b>%{hovertext}</b><br><br>" +
-                    "Fat: %{x:.2f}g<br>" + 
-                    "Proteins: %{y:.2f}g<br>" +
-                    "Energy: %{customdata[0]:.2f}kcal<br>" +
-                    "" +
-                    "<extra><img src='%{customdata[1]}'></extra>")
 
 fig.update_traces(hoverinfo="none", hovertemplate=None)
 
@@ -29,11 +33,13 @@ fig.update_layout(modebar_remove=['select', 'autoScale', 'lasso2d', "lasso"])
 # change the default behavior to pan
 fig.update_layout(dragmode="pan")
 
-external_stylesheets = ["style.css"]
+external_stylesheets = ["https://raw.githubusercontent.com/LucasTreuke/projeto-visualizacao-informacao-nutrientes/main/style.css"]
 app = Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
 
 app.layout = html.Div([
+    html.H1("Visualização de Informação"),
+    html.H2("Por: Lucas Treuke"),
     dcc.Graph(id="graph", figure=fig, clear_on_unhover=True),
     dcc.Tooltip(id="graph-tooltip"),
 ])
