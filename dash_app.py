@@ -56,7 +56,7 @@ app = Dash(__name__)
 server = app.server
 
 app.layout = html.Div([
-    html.H1("Visualização de Informação"),
+    html.H1("Visualização da Informação"),
     html.H2("Por: Lucas Treuke"),
     dcc.Graph(id="graph", figure=fig, clear_on_unhover=True),
     dcc.Tooltip(id="graph-tooltip"),

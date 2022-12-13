@@ -9,5 +9,4 @@ A escolha foi feita, pois eu estava com um pouco de curiosidade sobre como monta
 
 A minha ambição para o projeto final de visualização seria criar uma visualização interativa que explorasse a funcionalidade de _hover_ na exibição, isso, pois eu acredito no poder informativo de um gráfico simples, apenas com uma visão mais superficial de informação, integrado a uma visualização mais detalhada à medida que um tópico é escolhido. No meu caso, essa escolha seria feita ao passar o mouse sobre um item.
 
-
-
+Como a base é de alimentos, será muito útil vincular cada alimento a uma imagem
